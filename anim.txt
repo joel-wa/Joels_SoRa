@@ -1,0 +1,23 @@
+[
+    {"time": 0, "object": "ball", "position": {"x": 0, "y": 0, "z": 0}},
+    {"time": 1, "object": "ball", "position": {"x": 0, "y": 1, "z": 0}},
+    {"time": 2, "object": "ball", "position": {"x": 0, "y": 2, "z": 0}},
+    {"time": 3, "object": "ball", "position": {"x": 0, "y": 3, "z": 0}},
+    {"time": 4, "object": "ball", "position": {"x": 0, "y": 4, "z": 0}},
+    {"time": 5, "object": "ball", "position": {"x": 0, "y": 5, "z": 0}},
+    {"time": 6, "object": "ball", "position": {"x": 0, "y": 4, "z": 0}},
+    {"time": 7, "object": "ball", "position": {"x": 0, "y": 3, "z": 0}},
+    {"time": 8, "object": "ball", "position": {"x": 0, "y": 2, "z": 0}},
+    {"time": 9, "object": "ball", "position": {"x": 0, "y": 1, "z": 0}},
+    {"time": 10, "object": "ball", "position": {"x": 0, "y": 0, "z": 0}},
+    {"time": 11, "object": "ball", "position": {"x": 1, "y": 0, "z": 0}},
+    {"time": 12, "object": "ball", "position": {"x": 2, "y": 0, "z": 0}},
+    {"time": 13, "object": "ball", "position": {"x": 3, "y": 0, "z": 0}},
+    {"time": 14, "object": "ball", "position": {"x": 4, "y": 0, "z": 0}},
+    {"time": 15, "object": "ball", "position": {"x": 5, "y": 0, "z": 0}},
+    {"time": 16, "object": "ball", "position": {"x": 5, "y": 1, "z": 0}},
+    {"time": 17, "object": "ball", "position": {"x": 5, "y": 2, "z": 0}},
+    {"time": 18, "object": "ball", "position": {"x": 5, "y": 3, "z": 0}},
+    {"time": 19, "object": "ball", "position": {"x": 5, "y": 4, "z": 0}},
+    {"time": 20, "object": "ball", "position": {"x": 5, "y": 5, "z": 0}}
+]

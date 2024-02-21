@@ -1,0 +1,12 @@
+objectName = "triangle"
+objectVertices = (
+    (0, 1, 0),
+    (-1, -1, 0),
+    (1, -1, 0)
+)
+
+objectEdges = (
+    (0, 1),
+    (1, 2),
+    (2, 0)
+)

@@ -1,0 +1,12 @@
+[
+    {"time": 0, "object": "triangle", "position": {"x": 0, "y": 0, "z": 0}},
+    {"time": 1, "object": "triangle", "position": {"x": 0, "y": 1, "z": 0}},
+    {"time": 2, "object": "triangle", "position": {"x": 0, "y": 2, "z": 0}},
+    {"time": 3, "object": "triangle", "position": {"x": 0, "y": 3, "z": 0}},
+    {"time": 4, "object": "triangle", "position": {"x": 0, "y": 4, "z": 0}},
+    {"time": 5, "object": "triangle", "position": {"x": 0, "y": 3, "z": 0}},
+    {"time": 6, "object": "triangle", "position": {"x": 0, "y": 2, "z": 0}},
+    {"time": 7, "object": "triangle", "position": {"x": 0, "y": 1, "z": 0}},
+    {"time": 8, "object": "triangle", "position": {"x": 0, "y": 0, "z": 0}},
+    {"time": 9, "object": "triangle", "position": {"x": 0, "y": 0, "z": 0}}
+]

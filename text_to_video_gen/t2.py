@@ -1,8 +1,12 @@
+import json
 from scene import SceneClass
 from sceneObjects import SceneObject
 from util import UtilClass
 from draw import CustomDraw
 
+from pynput.mouse import Controller
+
+mouse = Controller()
 
 import math
 import pygame as pg
@@ -18,19 +22,16 @@ util = UtilClass()
 scene = SceneClass([],{})
 draw = CustomDraw()
 
-a,b = util.read_shape_data(r"C:\Users\RanVic\OneDrive\Documents\GitHub\Joels_SoRa\sphere.txt")
+a,b = util.read_shape_data(r"C:\Users\RanVic\OneDrive\Documents\GitHub\Joels_SoRa\object.txt")
+
+ge,gv = util.read_shape_data(r"C:\Users\RanVic\OneDrive\Documents\GitHub\Joels_SoRa\gun.txt")
 
 so  = SceneObject("cube",0,a,b)
 
-print(a)
-print(b)
+gun = SceneObject("gun",0,ge,gv)
 
-# scene.addObject("cube",so)
-
-
-
-num_latitude = 10
-num_longitude = 10
+num_latitude = 20
+num_longitude = 40
 
 sv = draw.generate_sphere_vertices(2,num_latitude,num_longitude)
 
@@ -43,48 +44,37 @@ for i in range(num_latitude):
         sphere_edges.extend([(current, next_row), (current, next_col)])
 
 
+
+
 sphere = SceneObject("sphere",0,sphere_edges,sv)
 
+
 scene.addObject("sphere",sphere)
-scene.addObject("cube",so)
+# scene.addObject("cube",so)
+# scene.addObject("gun",gun)
 
-# scene.removeObject("cube")
-movement = [-1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,-0.5,0,0,0,0,0,0,0,0,0,0,0,0,0.5,0,0,0,0,0,0,0,0,0,0]
-mi =0
+obj = util.read_object_data("gunobj.txt")
+scene.addObject(obj.name,obj)
 
-def main():
-    global cube_x_position, pyramid_x_position,mi,movement
+# obj util.read_object_data("")
 
-    pg.init()
-    display = (800, 600)
-    pg.display.set_mode(display, DOUBLEBUF | OPENGL)
-
-    gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)
-
-    glTranslatef(0.0, 0, -10)
-
-    while True:
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                pg.quit()
-                quit()
+def load(file_path):
         
-        if mi == len(movement)-1:
-            mi = 0
-        else:
-            mi +=1
+    with open(file_path, 'r') as file:
+        loaded_positions = json.load(file)
+        return loaded_positions
 
-        # glRotatef(1,0.5,0,0)
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-
-
-        scene.translateObject("sphere",0.05)
-        scene.translateObject("cube",-0.05)
-
-        
-        scene.drawScene()
-        pg.display.flip()
-        pg.time.wait(10)
 
 if __name__ == "__main__":
-    main()
+    # main()
+    scene.playScene("triangleAnim.txt",20,10)
+    # scene.playScene("positions.txt",40,10)
+
+
+
+
+
+
+# scene.transformObject("sphere",mouse.position[0]/30 -20,-mouse.position[1]/20 +20)
+# scene.transformObject("sphere",-10)
+    

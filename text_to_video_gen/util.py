@@ -1,5 +1,5 @@
 import json
-
+from scene import SceneObject
 
 class UtilClass:
                             
@@ -20,5 +20,20 @@ class UtilClass:
     def readTimeFrameFromFile(self,file_path):
         with open(file_path, 'r') as file:
             return [json.loads(line) for line in file]
+        
+
+        
+    def read_object_data(self,file_path):
+        with open(file_path, 'r') as file:
+            data = file.read()
+
+        # Evaluate the data as Python code to get the variables
+        obj_variables = {}
+        exec(data, globals(), obj_variables)
+        
+        # Create a SceneObject using the obtained variables
+        scene_object = SceneObject(obj_variables['objectName'],0, obj_variables['objectEdges'], obj_variables['objectVertices'])
+    
+        return scene_object
 
 
