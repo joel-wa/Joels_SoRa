@@ -22,13 +22,6 @@ util = UtilClass()
 scene = SceneClass([],{})
 draw = CustomDraw()
 
-# a,b = util.read_shape_data(r"C:\Users\RanVic\OneDrive\Documents\GitHub\Joels_SoRa\object.txt")
-
-# ge,gv = util.read_shape_data(r"C:\Users\RanVic\OneDrive\Documents\GitHub\Joels_SoRa\gun.txt")
-
-# so  = SceneObject("cube",0,a,b)
-
-# gun = SceneObject("gun",0,ge,gv)
 
 num_latitude = 20
 num_longitude = 40
@@ -49,12 +42,12 @@ for i in range(num_latitude):
 sphere = SceneObject("sphere",0,sphere_edges,sv)
 
 
-scene.addObject("sphere",sphere)
+scene.addObject("triangle",sphere)
 # scene.addObject("cube",so)
 # scene.addObject("gun",gun)
 
-obj = util.read_object_data(r"objectFiles\gunobj.txt")
-scene.addObject(obj.name,obj)
+# obj = util.read_object_data(r"objectFiles\gunobj.txt")
+# scene.addObject(obj.name,obj)
 
 # obj util.read_object_data("")
 
@@ -67,7 +60,7 @@ def load(file_path):
 
 if __name__ == "__main__":
     # main()
-    scene.playScene(r"animationFiles\triangleAnim.txt",20,10)
+    scene.playScene(r"animationFiles\triangleAnim.txt",20,30)
     # scene.playScene("positions.txt",40,10)
 
 

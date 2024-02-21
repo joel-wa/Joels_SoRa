@@ -11,7 +11,8 @@ from OpenGL.GLU import *
 class CustomDraw:
         
     def draw_obj(self,edges,vertices,x,y,z):
-        
+        objectColor = (0.8, 0.2, 0.2)
+        glColor3fv(objectColor)
         glBegin(GL_LINES)
         for edge in edges:
             for vertex in edge:
@@ -19,8 +20,13 @@ class CustomDraw:
                 glVertex3fv(rotated)
         glEnd()
 
-
-    pass
+    def draw_shadow_cube(self,objectVertices):
+        glColor3f(0, 0, 0)  # Color the shadow black
+        glBegin(GL_QUADS)
+        for vertex in objectVertices:
+            glVertex3fv(vertex)
+        glEnd()
+        pass
 
     def generate_sphere_vertices(self,radius, num_latitude, num_longitude):
         vertices = []

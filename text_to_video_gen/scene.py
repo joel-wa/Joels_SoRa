@@ -29,9 +29,12 @@ class SceneClass:
         pg.display.set_mode(display, DOUBLEBUF | OPENGL)
         clock = pg.time.Clock() 
 
+       
+        
+
         gluPerspective(45, (display[0] / display[1]), 0.1, 100.0)
 
-        glTranslatef(0.0, 0, -20)
+        glTranslatef(0.0, 0, -40)
 
         # Load positions from the file
         self.positions = self.load_positions_from_file(animationFile)
@@ -72,9 +75,8 @@ class SceneClass:
                 # glRotatef(1,1,1,1)
                 # Drawing the updated scene
                 self.drawScene()
-
                 pg.display.flip()
-                pg.time.wait(10)  # Adjust the wait time if needed
+                pg.time.wait(1)  # Adjust the wait time if needed
     def load_positions_from_file(self, file_path):
         with open(file_path, 'r') as file:
             positions = json.load(file)

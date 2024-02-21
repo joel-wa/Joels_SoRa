@@ -1,56 +1,95 @@
-from sceneObjects import SceneObject as so
-import json
-from scene import SceneClass
-from util import UtilClass
+import pygame
+from pygame.locals import *
+from OpenGL.GL import *
+from OpenGL.GLUT import *
+from OpenGL.GLU import *
 
+objectVertices = (
+    (-1, 1, 1),
+    (1, 1, 1),
+    (1, -1, 1),
+    (-1, -1, 1),
+    (-1, 1, -1),
+    (1, 1, -1),
+    (1, -1, -1),
+    (-1, -1, -1)
+)
 
-scene = SceneClass([],{})
+light_position = (0, 40, 50)
+light_diffuse = [0.9, 0.9, 0.9, 1.0]  # Increased light intensity
 
+rotation_speed = 0.2  # Adjust the rotation speed
 
-util = UtilClass()
-a,b = util.read_shape_data(r"C:\Users\RanVic\OneDrive\Documents\GitHub\Joels_SoRa\sphere.txt")
+def draw_cube():
+    glBegin(GL_QUADS)
+    for vertex in objectVertices:
+        glVertex3fv(vertex)
+    glEnd()
 
-cube  = so("cube",0,a,b)
+def draw_shadow_cube():
+    glBegin(GL_QUADS)
+    for vertex in objectVertices:
+        glVertex3fv(vertex)
+    glEnd()
 
+def draw_floor():
+    glBegin(GL_QUADS)
+    glVertex3f(-10, -1, -10)
+    glVertex3f(-10, -1, 10)
+    glVertex3f(10, -1, 10)
+    glVertex3f(10, -1, -10)
+    glEnd()
 
-# ball = so("ball", 0)
-# floor = so("floor", -1)
+def main():
+    pygame.init()
+    display = (800, 600)
+    pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
+    gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)
+    glTranslatef(0.0, 0.0, -5)
 
+    glEnable(GL_DEPTH_TEST)
+    glEnable(GL_LIGHTING)
+    glEnable(GL_LIGHT0)
+    glEnable(GL_STENCIL_TEST)
 
-# scene.addObject("sphere",sphere)
-scene.addObject("cube",cube)
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position)
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse)  # Set the diffuse component
 
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
 
-def getObject(key):
-    desired_object = next(obj for obj in scene.sceneMap.values() if obj.name == key)
-    return desired_object
+        # Get relative mouse movement
+        rel_x, rel_y = pygame.mouse.get_rel()
 
-def getSceneObjects():
-    keys = []
-    for obj in scene.sceneMap.values():
-        key = obj.name
-        keys.append(key)
-    return keys
+        # Rotate the scene based on mouse movement
+        glRotatef(rel_x * rotation_speed, 0, 1, 0)
+        glRotatef(rel_y * rotation_speed, 1, 0, 0)
 
-def readTimeFrameFromFile(file_path):
-    with open(file_path, 'r') as file:
-        return [json.loads(line) for line in file]
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT)
 
+        # Draw floor to stencil buffer
+        glEnable(GL_STENCIL_TEST)
+        glStencilFunc(GL_ALWAYS, 1, 1)
+        glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE)
+        draw_floor()
 
-timeFrame = readTimeFrameFromFile("timeframeScript.txt")
+        # Draw actual cube
+        glStencilFunc(GL_EQUAL, 1, 1)
+        glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)
+        draw_cube()
 
+        # Draw shadow cube
+        glStencilFunc(GL_EQUAL, 0, 1)
+        glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP)
+        draw_shadow_cube()
 
-print(timeFrame)
-timeIndex = 0
-for frame in timeFrame:
+        glDisable(GL_STENCIL_TEST)
 
-    print(f"At {timeIndex}")
+        pygame.display.flip()
+        pygame.time.wait(10)
 
-    for obj_key, obj_value in frame.items():
-            
-            if obj_key in getSceneObjects():
-                
-                getObject(obj_key).position = float(obj_value)
-                print(f"{obj_key}:", getObject(obj_key).position)
-
-    timeIndex += 1
+if __name__ == "__main__":
+    main()
