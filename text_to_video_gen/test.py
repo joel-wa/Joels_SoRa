@@ -17,6 +17,28 @@ pyramidVertices = ((1, 1, -1), (1, 1, 1), (-1, 1, 1), (-1, 1, -1), (0, -1, 0))
 pyramidEdges = ((0, 1), (1, 2), (2, 3), (3, 0), (0, 4), (1, 4), (2, 4), (3, 4))
 
 
+# num_latitude = 20
+# num_longitude = 40
+
+
+
+# sv = draw.generate_sphere_vertices(2,num_latitude,num_longitude)
+
+# sphere_edges = []
+# for i in range(num_latitude):
+#     for j in range(num_longitude):
+#         current = i * num_longitude + j
+#         next_row = (i + 1) % (num_latitude + 1) * num_longitude + j
+#         next_col = i * num_longitude + (j + 1) % num_longitude
+#         sphere_edges.extend([(current, next_row), (current, next_col)])
+
+
+
+
+# sphere = SceneObject("sphere",0,sphere_edges,sv)
+
+
+# scene.addObject("triangle",sphere)
 
 
 carVertices = (
@@ -195,11 +217,11 @@ def main():
         #draw cube
         # draw_obj(cubeEdges,cubeVertices)
         # wireCube()
-        # draw_pyramid()
+        draw_pyramid()
         # glPopMatrix()
         
         #draw pyramid
-        draw_obj(carEdges,carVertices)
+        # draw_obj(carEdges,carVertices)
         # draw_obj(cubeEdges,cubeVertices)
         # draw_car()
 

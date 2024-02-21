@@ -1,0 +1,33 @@
+# This is a proof of concept for a text-to-3D animation system I(Joel Assiakwa) conceptualized after getting inspiration from OpenAI's Sora
+
+The purpose of this system is to transform text prompts to complete and simple 3d animations
+
+# The way the system works
+
+A) EXTRACTION
+
+1) Given a text prompt eg. "A Ball bouncing": A transformer extracts the necessary objects needed for the scene to be complete.
+
+2) The various objects that are needed in the scene are then parsed to another transformer which creates the Edges and Vertices tuples for each of these objects and saves it to a file.
+
+3) Next, a script is created to match the prompt which describes the various actions or animations each object in the scene is going to have.
+
+4) The script is then parsed to another transformer that create a TimeFrame.txt file which contains information of the transformations of each object in the scene at each time interval in the form of a dict.
+
+
+B) Creating the SCENE
+
+5) Now from this information, all the various objects are added to the scene object.
+6) The Timeframe.txt file is then parsed to the scene object to play the animation according to the timeframes.
+7) The animation plays and shows a ball rolling.
+
+
+### Current Progress
+
+# Day 1 /14: 
+A timeframe system has been created that allows playing of animation from .txt files.
+Scene object formats have been created in a format that allows chatGPT to easily create objects.
+
+
+# Testing
+To try out the system, go to "text_to_video_gen" and run "t2.py"
