@@ -34,7 +34,7 @@ class SceneClass:
 
         gluPerspective(45, (display[0] / display[1]), 0.1, 100.0)
 
-        glTranslatef(0.0, 0, -40)
+        glTranslatef(0.0, 0, -10)
 
         # Load positions from the file
         self.positions = self.load_positions_from_file(animationFile)
@@ -72,7 +72,7 @@ class SceneClass:
 
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
                 # glRotatef(1,mouse.position[0],mouse.position[1],0)
-                # glRotatef(1,1,1,1)
+                glRotatef(1,1,1,1)
                 # Drawing the updated scene
                 self.drawScene()
                 pg.display.flip()
