@@ -26,7 +26,7 @@ draw = CustomDraw()
 # scene.addObject("cube",so)
 # scene.addObject("gun",gun)
 
-obj = util.read_object_data(r"objectFiles\pyramidobj.txt")
+obj = util.read_object_data(r"objectFiles\objectFile.txt")
 scene.addObject(obj.name,obj)
 
 # obj util.read_object_data("")
