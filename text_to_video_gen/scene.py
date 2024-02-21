@@ -58,7 +58,7 @@ class SceneClass:
 
                         # Update the object's position using translateObject
                         self.changeObjectPosition(object_key, x_position, y_position, z_position)
-                        self.translateObject(object_key, x_position, y_position, z_position)
+                        # self.translateObject(object_key, x_position, y_position, z_position)
 
                 clock.tick(fps)  # Adjust the frame rate (e.g., 30 frames per second)
 
