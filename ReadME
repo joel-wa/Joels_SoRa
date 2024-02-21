@@ -31,3 +31,15 @@ Scene object formats have been created in a format that allows chatGPT to easily
 
 # Testing
 To try out the system, go to "text_to_video_gen" and run "t2.py"
+
+# Explanation
+In the scene, we first create an object from a txt file using the read_object_data()
+Next we add that object to the scene
+Finally, we send the animation we want to play, which already contains the key of the object we want to animate and the animation plays
+
+# Scene.playScene()
+This method contains the necessary OpenGL functions needed to create the scene.
+In this, we have a loop that lasts for the number of timeframes in the animation we want to play
+
+ARGS: AnimationFile, Frames Per Second, Loop(The number of times the animation should replay after completion)
+
