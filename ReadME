@@ -1,6 +1,6 @@
 # This is a proof of concept for a text-to-3D animation system I(Joel Assiakwa) conceptualized after getting inspiration from OpenAI's Sora
 
-The purpose of this system is to transform text prompts to complete and simple 3d animations
+The purpose of this system is to transform text prompts into complete and simple 3d animations
 
 # The way the system works
 
@@ -12,7 +12,7 @@ A) EXTRACTION
 
 3) Next, a script is created to match the prompt which describes the various actions or animations each object in the scene is going to have.
 
-4) The script is then parsed to another transformer that create a TimeFrame.txt file which contains information of the transformations of each object in the scene at each time interval in the form of a dict.
+4) The script is then parsed to another transformer that creates a TimeFrame.txt file which contains information on the transformations of each object in the scene at each time interval in the form of a dict.
 
 
 B) Creating the SCENE
@@ -25,7 +25,7 @@ B) Creating the SCENE
 ### Current Progress
 
 # Day 1 /14: 
-A timeframe system has been created that allows playing of animation from .txt files.
+A timeframe system has been created that allows the playing of animation from .txt files.
 Scene object formats have been created in a format that allows chatGPT to easily create objects.
 
 
@@ -33,9 +33,9 @@ Scene object formats have been created in a format that allows chatGPT to easily
 To try out the system, go to "text_to_video_gen" and run "t2.py"
 
 # Explanation
-In the scene, we first create an object from a txt file using the read_object_data()
-Next we add that object to the scene
-Finally, we send the animation we want to play, which already contains the key of the object we want to animate and the animation plays
+In the scene, we first create an object from a .txt file using the read_object_data()
+Next, we add that object to the scene
+Finally, we send the animation we want to play, which already contains the key of the object we want to animate, and the animation plays
 
 # Scene.playScene()
 This method contains the necessary OpenGL functions needed to create the scene.
