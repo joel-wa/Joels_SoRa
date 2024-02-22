@@ -11,6 +11,10 @@ from util import CustomUtil
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 4a42f51 (Added prompted objects to scene)
 openai.api_key = ''
 
 gpt = CustomGPT()
