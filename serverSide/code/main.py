@@ -4,8 +4,17 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import openai
 import os
+from customGPTClass import CustomGPT,CustomFunctions
+from gptParser import GPTParser
 
 
+
+
+openai.api_key = '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'
+
+gpt = CustomGPT()
+gptFunctions = CustomFunctions()
+gptParser = GPTParser()
 
 # Create the Flask app
 app = Flask(__name__)
@@ -37,9 +46,12 @@ def createObject():
         data = request.get_json()
     else:
         print("Input your prompt")
-        data = input()
-    output = f"Create a 3d object of {data}"
-    return output,201
+        data = "a square pyramid"
+    systemPrompt= "Create a 3d object of the given object "
+
+    output = gpt.chatAI(data,systemPrompt,[gptFunctions.createObjectFunction])
+    value = gptParser.parseResponse(output)
+    return f"{value}",201
 
 
 

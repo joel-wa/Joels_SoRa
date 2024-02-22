@@ -34,7 +34,7 @@ class SceneClass:
 
         gluPerspective(45, (display[0] / display[1]), 0.1, 100.0)
 
-        glTranslatef(0.0, 0, -10)
+        glTranslatef(0.0, 0, -20)
 
         # Load positions from the file
         self.positions = self.load_positions_from_file(animationFile)
@@ -77,6 +77,8 @@ class SceneClass:
                 self.drawScene()
                 pg.display.flip()
                 pg.time.wait(1)  # Adjust the wait time if needed
+
+
     def load_positions_from_file(self, file_path):
         with open(file_path, 'r') as file:
             positions = json.load(file)
@@ -110,6 +112,22 @@ class SceneClass:
 
     def addObject(self,key,object):
         self.sceneMap[key] = object
+
+    def addAllObjects(self,file_path):
+        obj_variables ={}
+
+        with open(file_path, 'r') as file:
+            data = file.read()
+
+        exec(data, globals(), obj_variables)
+        
+        objectMapList = obj_variables.get('value')
+
+
+        for object in objectMapList:
+            print(object)
+            obj = SceneObject(object["objectName"],0,object["objectEdges"],object["objectVertices"])
+            self.addObject(object["objectName"],obj)
 
     def removeObject(self,key):
         self.sceneObjects.pop(key)

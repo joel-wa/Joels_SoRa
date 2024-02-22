@@ -28,6 +28,11 @@ B) Creating the SCENE
 A timeframe system has been created that allows the playing of animation from .txt files.
 Scene object formats have been created in a format that allows chatGPT to easily create objects.
 
+# Day 2/14:
+Jaeymax worked compatibility for Crossplatform. Very Amazing
+I created a format that allows all objects in a scene to load from a single file. This will allow the AI and server to easily output all the objects it wants in the scene.
+Later today I should finish the basic API to prompt the AI for an object for it to create its vertices and edges and then put in the scene.
+
 
 # Testing
 To try out the system, go to "text_to_video_gen" and run "t2.py"

@@ -16,6 +16,12 @@ from OpenGL.GLU import *
 import os
 
 
+
+sceneObjectFile = "scene2.txt"
+animationFile = "positions.txt"
+animationFPS = 60
+loop = 100
+
 #First request the AI to generate the vertices of the objects in the given scene.
 #save it to a file.
 util = UtilClass()
@@ -23,36 +29,25 @@ scene = SceneClass([],{})
 draw = CustomDraw()
 
 
-# scene.addObject("cube",so)
-# scene.addObject("gun",gun)
-
-objectFile_path = os.path.join("./objectFiles","objectFile.txt")
+# objectFile_path = os.path.join("./objectFiles","objectFile.txt")
 
 
-#obj = util.read_object_data(r"objectFiles\objectFile.txt")
+#Below is the old implementation to add single objects from single files to a scene.
+# obj = util.read_object_data(r"objectFiles\square pyramid.txt")
+# obj = util.read_object_data(r"objectFiles\objectFile.txt")
 
-obj = util.read_object_data(objectFile_path)
+# obj = util.read_object_data(objectFile_path)
+# scene.addObject(obj.name,obj)
 
 
-scene.addObject(obj.name,obj)
+#New Implementation: Just state the location of the file containing the objects you want in the scene
+#and they will be loaded into the scene automatically.
+sceneObectFilePath = os.path.join("./objectFiles",sceneObjectFile)
 
-# obj util.read_object_data("")
+scene.addAllObjects(sceneObectFilePath)
 
 
 if __name__ == "__main__":
-    # main()
-    # scene.playScene(r"animationFiles\triangleAnim.txt",20,30)
-    #scene.playScene(r"animationFiles\positions.txt",40,10)
-    #pt = os.path.join("./animationFiles","positions.txt")
-    animationFile_path = os.path.join("./animationFiles","positions.txt")
+    animationFile_path = os.path.join("./animationFiles",animationFile)
     
-    scene.playScene(animationFile_path, 40,10)
-
-
-
-
-
-
-# scene.transformObject("sphere",mouse.position[0]/30 -20,-mouse.position[1]/20 +20)
-# scene.transformObject("sphere",-10)
-    
+    scene.playScene(animationFile_path, animationFPS,loop)
