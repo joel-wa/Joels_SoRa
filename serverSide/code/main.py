@@ -6,15 +6,18 @@ import openai
 import os
 from customGPTClass import CustomGPT,CustomFunctions
 from gptParser import GPTParser
+from util import CustomUtil
 
 
 
 
-openai.api_key = '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'
+openai.api_key = ''
 
 gpt = CustomGPT()
 gptFunctions = CustomFunctions()
 gptParser = GPTParser()
+
+util = CustomUtil()
 
 # Create the Flask app
 app = Flask(__name__)
@@ -47,9 +50,15 @@ def createObject():
     else:
         print("Input your prompt")
         data = "a square pyramid"
-    systemPrompt= "Create a 3d object of the given object "
 
-    output = gpt.chatAI(data,systemPrompt,[gptFunctions.createObjectFunction])
+
+    systemPrompt= "Create a 3d object details of the given object making sure all values are whole numbers and not decimals "
+
+
+    functions = util.loadAllFunctionFromSchema(["serverSide\gptFunctions\objectSchema.csv"])
+
+    output = gpt.chatAI(data,systemPrompt,functions)
+
     value = gptParser.parseResponse(output)
     return f"{value}",201
 
