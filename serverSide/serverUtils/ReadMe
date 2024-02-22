@@ -1,0 +1,5 @@
+# This folder contains custom code to remove repetitive server tasks:
+
+such as deploying the Server to EC2
+creating openAI functions for function calls
+converting function csv to json etc.
