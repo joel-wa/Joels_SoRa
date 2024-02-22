@@ -3,6 +3,7 @@ from scene import SceneClass
 from sceneObjects import SceneObject
 from util import UtilClass
 from draw import CustomDraw
+from serverRequest import ServerRequest
 
 from pynput.mouse import Controller
 
@@ -16,8 +17,10 @@ from OpenGL.GLU import *
 import os
 
 
+server = ServerRequest(url="http://127.0.0.1:5000/object")
 
-sceneObjectFile = "scene2.txt"
+
+sceneObjectFile = "sceneBuffer.txt"
 animationFile = "positions.txt"
 animationFPS = 60
 loop = 100
@@ -40,9 +43,24 @@ draw = CustomDraw()
 # scene.addObject(obj.name,obj)
 
 
+
+
+print("Input prompt:")
+prompt = input()
+
+obj = server.requestObject(prompt)
+bufferData = f"value = [{obj}]"
+util.write_dict_to_txt(bufferData,sceneObjectFile)
+
+
+
+
+
+
+
 #New Implementation: Just state the location of the file containing the objects you want in the scene
 #and they will be loaded into the scene automatically.
-sceneObectFilePath = os.path.join("./objectFiles",sceneObjectFile)
+sceneObectFilePath = os.path.join("./buffer",sceneObjectFile)
 
 scene.addAllObjects(sceneObectFilePath)
 

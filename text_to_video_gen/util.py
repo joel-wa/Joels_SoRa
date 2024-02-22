@@ -1,4 +1,5 @@
 import json
+import os
 from scene import SceneObject
 
 class UtilClass:
@@ -35,5 +36,14 @@ class UtilClass:
         scene_object = SceneObject(obj_variables['objectName'],0, obj_variables['objectEdges'], obj_variables['objectVertices'])
     
         return scene_object
+    
+
+    def write_dict_to_txt(self,dictionary, file_path):
+        file_path = os.path.join("./buffer",file_path)
+        with open(file_path, 'w') as file:
+
+            # print(dictionary)
+            t = f"{dictionary}"
+            file.write(t)
 
 
