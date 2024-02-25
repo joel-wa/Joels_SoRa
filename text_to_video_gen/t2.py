@@ -45,30 +45,36 @@ draw = CustomDraw()
 # scene.addObject(obj.name,obj)
 
 
+print("Regenerate? y/n")
+ans = input()
+regenerate = False
+
+if(ans.lower == "y"):
+    regenerate = True
 
 
+if(regenerate):
+    print("Input prompt:")
+    prompt = input()
 
-print("Input prompt:")
-prompt = input()
+    objList = ast.literal_eval(serverReqObj.requestObject(prompt))
 
-objList = ast.literal_eval(serverReqObj.requestObject(prompt))
-
-print(objList)
+    print(objList)
 
 
-bufferD = "value = ["
+    bufferD = "value = ["
 
-for ob in objList:
-    val = server.requestObject(ob)
-    bufferD += f"{val},"
+    for ob in objList:
+        val = server.requestObject(ob)
+        bufferD += f"{val},"
 
-bufferD +="]"
+    bufferD +="]"
 
-print(bufferD)
+    print(bufferD)
 
-# obj = server.requestObject(prompt)
-# bufferData = f"value = [{obj}]"
-util.write_dict_to_txt(bufferD,sceneObjectFile)
+    # obj = server.requestObject(prompt)
+    # bufferData = f"value = [{obj}]"
+    util.write_dict_to_txt(bufferD,sceneObjectFile)
 
 
 
