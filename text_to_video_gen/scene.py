@@ -32,9 +32,9 @@ class SceneClass:
        
         
 
-        gluPerspective(45, (display[0] / display[1]), 0.1, 100.0)
+        gluPerspective(45, (display[0] / display[1]), 0.1, 500.0)
 
-        glTranslatef(0.0, 0, -20)
+        glTranslatef(0.0, 0, -50)
 
         # Load positions from the file
         self.positions = self.load_positions_from_file(animationFile)

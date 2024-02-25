@@ -35,7 +35,13 @@ Later today I should finish the basic API to prompt the AI for an object for it 
 
 
 # Testing
-To try out the system, go to "text_to_video_gen" and run "t2.py"
+V1: To try out the system, go to "text_to_video_gen" and run "t2.py"
+
+Day2:
+To test, go to main.py in the serverSide Folder. Input your OpenAI API Key and run the server.
+Next Run the t2.py script in the text_to_video_gen folder.
+You will be prompted to input the object you want to create in your scene. Eg. "A cube".
+Wait for a while and you should see the scene open with the object in your scene.
 
 # Explanation
 In the scene, we first create an object from a .txt file using the read_object_data()

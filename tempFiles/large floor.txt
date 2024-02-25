@@ -1,0 +1,1 @@
+{'objectName': 'large floor', 'objectEdges': ((0, 1), (1, 2), (2, 3), (3, 0)), 'objectVertices': ((0, 0, 0), (100, 0, 0), (100, 100, 0), (0, 100, 0))}

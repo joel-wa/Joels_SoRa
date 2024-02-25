@@ -1,3 +1,4 @@
+import ast
 import json
 from scene import SceneClass
 from sceneObjects import SceneObject
@@ -18,6 +19,7 @@ import os
 
 
 server = ServerRequest(url="http://127.0.0.1:5000/object")
+serverReqObj = ServerRequest("http://127.0.0.1:5000/sceneObjects")
 
 
 sceneObjectFile = "sceneBuffer.txt"
@@ -45,12 +47,28 @@ draw = CustomDraw()
 
 
 
+
 print("Input prompt:")
 prompt = input()
 
-obj = server.requestObject(prompt)
-bufferData = f"value = [{obj}]"
-util.write_dict_to_txt(bufferData,sceneObjectFile)
+objList = ast.literal_eval(serverReqObj.requestObject(prompt))
+
+print(objList)
+
+
+bufferD = "value = ["
+
+for ob in objList:
+    val = server.requestObject(ob)
+    bufferD += f"{val},"
+
+bufferD +="]"
+
+print(bufferD)
+
+# obj = server.requestObject(prompt)
+# bufferData = f"value = [{obj}]"
+util.write_dict_to_txt(bufferD,sceneObjectFile)
 
 
 

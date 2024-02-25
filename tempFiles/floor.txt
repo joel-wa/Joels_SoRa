@@ -1,0 +1,1 @@
+{'objectName': 'floor', 'objectEdges': ((0, 1), (1, 2), (2, 3), (3, 0)), 'objectVertices': ((0, 0, 0), (10, 0, 0), (10, 10, 0), (0, 10, 0))}

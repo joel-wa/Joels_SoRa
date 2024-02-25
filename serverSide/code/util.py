@@ -1,4 +1,6 @@
 import csv
+import json
+import os
 
 
 class CustomUtil:
@@ -57,4 +59,9 @@ class CustomUtil:
         return schema_list
 
         pass
+
+    def openAIToken(self):
+        with open("serverSide/serverUtils/apiKeys.json") as f:
+            apiKey = json.load(f)["openAI_token"]
+        return apiKey
 

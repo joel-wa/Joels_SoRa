@@ -9,7 +9,7 @@ class ServerRequest:
         response = requests.post(self.url,json=prompt)
 
         if response.status_code == 201:
-            print("successful")
+            # print("successful")
             return response.text
 
         else:

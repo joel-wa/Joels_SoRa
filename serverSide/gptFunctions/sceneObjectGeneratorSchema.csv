@@ -1,2 +1,2 @@
 name,description,parameters,required
-sceneObjects,a function to determine the various objects needed to make an animation scene based on the input,"{'type': 'object', 'properties': {'objectList': {'type': 'string', 'description': 'the list of all objects that need to be included in the animation scene. Eg,from ""A ball rolling"", the result will be [""ball"",""floor""].'}}}",['objectList']
+sceneObjects,a function to determine the various objects needed to make an animation scene based on the input,"{'type': 'object', 'properties': {'objectList': {'type': 'string', 'description': 'the list of all objects that need to be included in the animation scene. Eg,from ""A ball rolling"", the objectList will be [""ball"",""floor""].'}}}",['objectList']

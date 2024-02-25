@@ -46,6 +46,15 @@ class CustomFunctions:
         }
 
         return objectMap
+    
+
+    def getSceneObjects(self,json_data):
+        data = json.loads(json_data)
+
+        objectList = data["objectList"]
+        objLists = objectList.split(",")
+        print(objLists)
+        return objLists
 
 
     def convert_string_to_tuple(self,input_string):
