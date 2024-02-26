@@ -5,7 +5,9 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 
 
+from draw import CustomDraw
 
+draw = CustomDraw()
 
 cubeVertices = ((1, 1, 1), (1, 1, -1), (1, -1, -1), (1, -1, 1), (-1, 1, 1), (-1, -1, -1), (-1, -1, 1), (-1, 1, -1))
 cubeEdges = ((0, 1), (0, 3), (0, 4), (1, 2), (1, 7), (2, 5), (2, 3), (3, 6), (4, 6), (4, 7), (5, 6), (5, 7))
@@ -17,20 +19,20 @@ pyramidVertices = ((1, 1, -1), (1, 1, 1), (-1, 1, 1), (-1, 1, -1), (0, -1, 0))
 pyramidEdges = ((0, 1), (1, 2), (2, 3), (3, 0), (0, 4), (1, 4), (2, 4), (3, 4))
 
 
-# num_latitude = 20
-# num_longitude = 40
+num_latitude = 20
+num_longitude = 40
 
 
 
-# sv = draw.generate_sphere_vertices(2,num_latitude,num_longitude)
+sv = draw.generate_sphere_vertices(2,num_latitude,num_longitude)
 
-# sphere_edges = []
-# for i in range(num_latitude):
-#     for j in range(num_longitude):
-#         current = i * num_longitude + j
-#         next_row = (i + 1) % (num_latitude + 1) * num_longitude + j
-#         next_col = i * num_longitude + (j + 1) % num_longitude
-#         sphere_edges.extend([(current, next_row), (current, next_col)])
+sphere_edges = []
+for i in range(num_latitude):
+    for j in range(num_longitude):
+        current = i * num_longitude + j
+        next_row = (i + 1) % (num_latitude + 1) * num_longitude + j
+        next_col = i * num_longitude + (j + 1) % num_longitude
+        sphere_edges.extend([(current, next_row), (current, next_col)])
 
 
 
@@ -217,7 +219,8 @@ def main():
         #draw cube
         # draw_obj(cubeEdges,cubeVertices)
         # wireCube()
-        draw_pyramid()
+        # draw_pyramid()
+        draw_obj(sphere_edges,sv)
         # glPopMatrix()
         
         #draw pyramid
@@ -229,4 +232,6 @@ def main():
         pg.time.wait(10)
 
 if __name__ == "__main__":
+    print(f"Edges: {sphere_edges}")
+    print(f"Vert: {sv}")
     main()

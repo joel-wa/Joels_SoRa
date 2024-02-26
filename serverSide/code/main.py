@@ -55,6 +55,15 @@ def createObject():
 
     systemPrompt= "Create a 3d object details of the given object making sure all values are whole numbers and not decimals "
 
+    #check if object is in buffer
+    if(util.checkObjectBuffer(data)):
+        print(f"Obejct in buffer {data}")
+        with open(f"./tempFiles/{data}.txt",mode="r") as file:
+            info = file.read()
+        return info,201
+    else:
+        print("Not in buffer")
+
 
     functions = util.loadAllFunctionFromSchema(["serverSide\gptFunctions\objectSchema.csv"])
 

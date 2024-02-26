@@ -64,4 +64,13 @@ class CustomUtil:
         with open("serverSide/serverUtils/apiKeys.json") as f:
             apiKey = json.load(f)["openAI_token"]
         return apiKey
+    
+
+
+    def checkObjectBuffer(self,objectName):
+        file = f"./tempFiles/{objectName}.txt"
+        if os.path.exists(file):
+            return True
+        return False
+        
 
