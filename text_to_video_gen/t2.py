@@ -49,7 +49,7 @@ print("Regenerate? y/n")
 ans = input()
 regenerate = False
 
-if(ans.lower == "y"):
+if(ans == "y"):
     regenerate = True
 
 
